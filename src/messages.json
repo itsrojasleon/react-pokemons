@@ -1,0 +1,38 @@
+{
+  "es": {
+    "list": "Listado de Pokemons",
+    "by": "por",
+    "detail": "Detalle del pokemon",
+    "name": "Nombre",
+    "experience": "Experiencia",
+    "weight": "Peso",
+    "height": "Altura",
+    "data": "Datos generales",
+    "type": "Tipo",
+    "see-details": "Ver detalles",
+    "search": "Busca a tu pokemon preferido",
+    "write": "Continua escribiendo ...",
+    "no-results": "No se encontraron resultados",
+    "not-found": "Pagina no encontrada",
+    "back-to-home": "Regresar a el inicio",
+    "own-data": "Datos propios"
+  },
+  "en": {
+    "list": "List of Pokemons",
+    "by": "by",
+    "detail": "Pokemon detail",
+    "name": "Name",
+    "experience": "Experience",
+    "weight": "Weight",
+    "height": "Height",
+    "data": "General data",
+    "type": "Type",
+    "see-details": "See details",
+    "search": "Find your favorite pokemon",
+    "write": "Keep typing ...",
+    "no-results": "No results found",
+    "not-found": "Page not found",
+    "back-to-home": "Back to home",
+    "own-data": "Own data"
+  }
+}
