@@ -1,1 +1,4 @@
-.title { font-family: 'Cardo', serif; }
+.title {
+  font-family: 'Cardo', serif;
+  font-size: 2em;
+}
