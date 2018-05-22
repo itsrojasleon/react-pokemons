@@ -1,59 +1,51 @@
 import React, { Component } from 'react';
-import api from '../services/api';
 import Pokemon from '../components/Pokemon';
-import Loading from '../components/shared/Loading';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { fetchPokemons } from '../actions';
 
 import './index.css';
 
 class Home extends Component {
-  state = {
-    dataPokemons: [],
-    page: 0,
-    loading: true,
-  };
 
-  async componentDidMount() {
-    const pokemonsResponse = await api.pokemons.getDataPokemons(this.state.page);
-    const dataPokemons = pokemonsResponse.results;
-
-    this.setState({
-      dataPokemons,
-      page: this.state.page + 20,
-      loading: false,
-    });
-    window.addEventListener('scroll', this.scrolling);
+  componentDidMount() {
+    this.props.fetchPokemons();
+    // window.addEventListener('scroll', this.scrolling);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.scrolling);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.scrolling);
+  // }
 
-  scrolling = (event) => {
-    if(this.state.loading) return null;
+  // scrolling = (event) => {
+  //   if(this.state.loading) return null;
 
-    const scrolled = window.scrollY;
-    const vhHeigth = window.innerHeight;
-    const fullHeight = document.body.clientHeight;
+  //   const scrolled = window.scrollY;
+  //   const vhHeigth = window.innerHeight;
+  //   const fullHeight = document.body.clientHeight;
 
-    if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
-      return null;
-    }
+  //   if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
+  //     return null;
+  //   }
 
-    this.setState({loading: true}, async () => {
-      const responsePokemons = await api.pokemons.getDataPokemons(this.state.page);
-      const dataPokemons = responsePokemons.results;
+  //   this.setState({loading: true}, async () => {
+  //     const responsePokemons = await api.pokemons.getDataPokemons(this.state.page);
+  //     const dataPokemons = responsePokemons.results;
 
-      this.setState({
-        dataPokemons: this.state.dataPokemons.concat(dataPokemons),
-        page: this.state.page + 20,
-        loading: false,
-      })
-    });
-  }
+  //     this.setState({
+  //       dataPokemons: this.state.dataPokemons.concat(dataPokemons),
+  //       page: this.state.page + 20,
+  //       loading: false,
+  //     })
+  //   });
+  // }
 
   render() {
+    const { pokemons } = this.props;
+    if (!pokemons) {
+      return <p>Empty</p>
+    }
     return (
       <div>
         <section>
@@ -63,9 +55,9 @@ class Home extends Component {
             </div>
           </div>
         </section>
-        <button>{this.state.dataPokemons.length} pokemons</button>
+        {/*<button>{this.state.dataPokemons.length} pokemons</button>*/}
         <div>
-          {this.state.dataPokemons.map((dataPokemon) => {
+          {pokemons.map((dataPokemon) => {
             return (
               <Pokemon
                 key={dataPokemon.url}
@@ -74,7 +66,7 @@ class Home extends Component {
             )
           })}
         </div>
-        {this.state.loading && <Loading />}
+        {/*{this.state.loading && <Loading />}*/}
       </div>
     );
   }
@@ -86,4 +78,8 @@ Home.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default Home;
+const mapStateToProps = ({ pokemons }) => ({
+  pokemons,
+});
+
+export default connect(mapStateToProps, { fetchPokemons })(Home);

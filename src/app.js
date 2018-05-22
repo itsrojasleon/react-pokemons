@@ -5,13 +5,16 @@ import ProfilePokemon from './pages/profile-pokemon';
 import Error404 from './pages/error-404';
 import SearchBar from './containers/search-bar';
 
+import LoadingBar from 'react-redux-loading';
+
 export default class Routes extends React.Component {
   render() {
     return (
       <Router>
         <div>
           <div>
-            <SearchBar />
+
+            <LoadingBar />
           </div>
         <Switch>
           <Route exact path="/" component={Home} />
