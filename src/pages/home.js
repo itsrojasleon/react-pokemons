@@ -3,46 +3,38 @@ import Pokemon from '../components/Pokemon';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { fetchPokemons } from '../actions';
+import { fetchPokemons, addNewPage } from '../actions';
 
 import './index.css';
 
 class Home extends Component {
+  state = {
+    page: 0,
+  }
   static propTypes = {
     pokemons: PropTypes.array.isRequired,
   }
-
   componentDidMount() {
     this.props.fetchPokemons();
     window.addEventListener('scroll', this.scrolling);
   }
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.scrolling);
   }
+  scrolling = (event) => {
 
-  // scrolling = (event) => {
-  //   if(this.state.loading) return null;
+    const scrolled = window.scrollY;
+    const vhHeigth = window.innerHeight;
+    const fullHeight = document.body.clientHeight;
 
-  //   const scrolled = window.scrollY;
-  //   const vhHeigth = window.innerHeight;
-  //   const fullHeight = document.body.clientHeight;
-
-  //   if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
-  //     return null;
-  //   }
-
-  //   this.setState({loading: true}, async () => {
-  //     const responsePokemons = await api.pokemons.getDataPokemons(this.state.page);
-  //     const dataPokemons = responsePokemons.results;
-
-  //     this.setState({
-  //       dataPokemons: this.state.dataPokemons.concat(dataPokemons),
-  //       page: this.state.page + 20,
-  //       loading: false,
-  //     })
-  //   });
-  // }
+    if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
+      return null;
+    }
+    this.setState({
+      page: this.state.page + 20,
+    });
+    this.props.addNewPage(this.state.page);
+  }
 
   render() {
     const { pokemons } = this.props;
@@ -65,7 +57,7 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = ({ pokemons }) => ({
+const mapStateToProps = ({ pokemons: { pokemons } }) => ({
   pokemons,
 });
-export default connect(mapStateToProps, { fetchPokemons })(Home);
+export default connect(mapStateToProps, { fetchPokemons, addNewPage })(Home);
