@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
+import './index.css';
+
 export default class SearchBar extends Component {
   // state = {
   //   search: '',
@@ -47,20 +49,13 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <input
-            placeholder="Find pokemons"
-          />
-        </form>
-        {/*<form onSubmit={this.handleSearch}>
-          <input
-            onChange={this.handleOnSearch}
-            placeholder="Find your favorite pokemon"
-          />
-        </form>
-        {this.renderPokemon()}*/}
-      </div>
+      <form className="form">
+        <input
+          className="input"
+          placeholder="Find pokemons"
+        />
+        <button className="button-submit" type="submit">Search</button>
+      </form>
     )
   }
 }

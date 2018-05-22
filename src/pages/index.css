@@ -2,3 +2,16 @@
   font-family: 'Cardo', serif;
   font-size: 2em;
 }
+.pokemons-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 80%;
+  margin: auto;
+}
+@media(max-width: 769px) {
+  .pokemons-container {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

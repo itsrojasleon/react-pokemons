@@ -11,7 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{ width: '100%' }}>
           <div>
             <SearchBar />
             <LoadingBar style={{ backgroundColor: 'black', height: '5px', borderRadius: 5 }} />

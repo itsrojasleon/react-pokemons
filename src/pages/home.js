@@ -42,7 +42,7 @@ class Home extends Component {
       <div>
         <h1 className="title"><FormattedMessage id="list" /></h1>
         {/*<button>{this.state.dataPokemons.length} pokemons</button>*/}
-        <div>
+        <div className="pokemons-container">
           {pokemons.map((dataPokemon) => {
             return (
               <Pokemon
