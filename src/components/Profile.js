@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 export default class Profile extends Component {
   render() {
     return (
-      <div>
+      {/*<div>
         <section>
           <div>
             <div>
@@ -31,7 +31,7 @@ export default class Profile extends Component {
             </div>
           </div>
         )}
-      </div>
+      </div>*/}
     )
   }
 }

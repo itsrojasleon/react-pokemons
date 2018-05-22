@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Profile from '../components/Profile';
-import Loading from '../components/shared/Loading';
-import Footer from '../components/shared/Footer';
-import PropTypes from 'prop-types';
-import Type from '../components/Type';
+// import Profile from '../components/Profile';
+// import Loading from '../components/shared/Loading';
+// import Footer from '../components/shared/Footer';
+// import PropTypes from 'prop-types';
+// import Type from '../components/Type';
 
 export default class ProfilePokemon extends Component {
   // async componentDidMount() {
@@ -34,14 +34,14 @@ export default class ProfilePokemon extends Component {
             })}
           </div>
         )}
-        {this.state.pokemons.detail && <h2>Pokemon no encontrado "{this.props.match.params.id}"</h2>}*/}
-        <Footer />
+        {this.state.pokemons.detail && <h2>Pokemon no encontrado "{this.props.match.params.id}"</h2>}
+        <Footer />*/}
       </div>
     )
   }
 }
 
-ProfilePokemon.propTypes = {
-  pokemons: PropTypes.object,
-  loading: PropTypes.bool,
-}
+// ProfilePokemon.propTypes = {
+//   pokemons: PropTypes.object,
+//   loading: PropTypes.bool,
+// }

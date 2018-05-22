@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchPokemon } from '../actions';
 
 import './index.css';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   // state = {
   //   search: '',
   //   exactQuery: '',
@@ -46,16 +46,30 @@ export default class SearchBar extends Component {
   //     return <div><FormattedMessage id="no-results" /></div>
   //   }
   // }
+  state = {
+    term: '',
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.fetchPokemon(this.state.term);
+  }
+
+  onChange = (e) => {
+    const term = e.target.value;
+    this.setState({ term });
+  }
 
   render() {
     return (
-      <form className="form">
+      <form onSubmit={this.onSubmit} className="form">
         <input
           className="input"
           placeholder="Find pokemons"
+          onChange={this.onChange}
         />
         <button className="button-submit" type="submit">Search</button>
       </form>
     )
   }
 }
+export default connect(null, { fetchPokemon })(SearchBar);
