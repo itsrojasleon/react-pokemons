@@ -5,6 +5,8 @@ import Loading from '../components/shared/Loading';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import './index.css';
+
 class Home extends Component {
   state = {
     dataPokemons: [],
@@ -57,7 +59,7 @@ class Home extends Component {
         <section>
           <div>
             <div>
-              <h1><FormattedMessage id="list" /></h1>
+              <h1 className="title"><FormattedMessage id="list" /></h1>
             </div>
           </div>
         </section>
