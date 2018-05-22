@@ -13,7 +13,7 @@ export default class Routes extends React.Component {
       <Router>
         <div>
           <div>
-
+            <SearchBar />
             <LoadingBar />
           </div>
         <Switch>
