@@ -28,7 +28,7 @@ export default class SearchBar extends Component {
     if(this.state.exactQuery.name === this.state.search) {
       const image = 'https://img.pokemondb.net/sprites/black-white/anim/normal';
       return (
-        <div className="card search-container">
+        <div>
           <h3>{this.state.exactQuery.name}</h3>
           <img src={`${image}/${this.state.exactQuery.name}.gif`} alt={this.state.exactQuery.name} />
           <Link to={`/${this.state.exactQuery.name}`}><FormattedMessage id="see-details" /></Link>
@@ -48,11 +48,10 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div className="column is-4 input-container">
+      <div>
         <form onSubmit={this.handleSearch}>
           <input
             onChange={this.handleOnSearch}
-            className="input is-info is-medium"
             placeholder="Find your favorite pokemon"
           />
         </form>

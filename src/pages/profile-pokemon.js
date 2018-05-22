@@ -40,7 +40,7 @@ export default class ProfilePokemon extends Component {
             })}
           </div>
         )}
-        {this.state.pokemons.detail && <h2 className="is-size-4 has-text-danger">Pokemon no encontrado "{this.props.match.params.id}"</h2>}
+        {this.state.pokemons.detail && <h2>Pokemon no encontrado "{this.props.match.params.id}"</h2>}
         <Footer />
       </div>
     )

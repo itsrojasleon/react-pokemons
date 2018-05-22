@@ -54,15 +54,15 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <section className="hero is-warning">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title"><FormattedMessage id="list" /></h1>
+        <section>
+          <div>
+            <div>
+              <h1><FormattedMessage id="list" /></h1>
             </div>
           </div>
         </section>
-        <button className="is-static button counter">{this.state.dataPokemons.length} pokemons</button>
-        <div className="columns is-multiline">
+        <button>{this.state.dataPokemons.length} pokemons</button>
+        <div>
           {this.state.dataPokemons.map((dataPokemon) => {
             return (
               <Pokemon

@@ -8,12 +8,17 @@ import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 import messages from './messages.json';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 addLocaleData([...en, ...es]);
 const locale = navigator.languages.indexOf('es') >= 0 ? 'es' : 'en';
 
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages[locale]}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </IntlProvider>,
   document.getElementById('root')
 );

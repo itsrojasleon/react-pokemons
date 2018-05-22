@@ -10,7 +10,7 @@ export default class Routes extends React.Component {
     return (
       <Router>
         <div>
-          <div className="hero is-warning">
+          <div>
             <SearchBar />
           </div>
         <Switch>
