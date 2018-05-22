@@ -7,18 +7,18 @@ import SearchBar from './containers/search-bar';
 
 import LoadingBar from 'react-redux-loading';
 
-export default class Routes extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <Router>
         <div>
           <div>
             <SearchBar />
-            <LoadingBar />
+            <LoadingBar style={{ backgroundColor: 'black', height: '5px', borderRadius: 5 }} />
           </div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/:id" component={ProfilePokemon} />
+          <Route exact path="/:pokemonId" component={ProfilePokemon} />
           <Route path="*" component={Error404} />
         </Switch>
         </div>

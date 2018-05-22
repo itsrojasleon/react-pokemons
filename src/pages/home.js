@@ -8,15 +8,18 @@ import { fetchPokemons } from '../actions';
 import './index.css';
 
 class Home extends Component {
+  static propTypes = {
+    pokemons: PropTypes.array.isRequired,
+  }
 
   componentDidMount() {
     this.props.fetchPokemons();
-    // window.addEventListener('scroll', this.scrolling);
+    window.addEventListener('scroll', this.scrolling);
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('scroll', this.scrolling);
-  // }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrolling);
+  }
 
   // scrolling = (event) => {
   //   if(this.state.loading) return null;
@@ -43,18 +46,9 @@ class Home extends Component {
 
   render() {
     const { pokemons } = this.props;
-    if (!pokemons) {
-      return <p>Empty</p>
-    }
     return (
       <div>
-        <section>
-          <div>
-            <div>
-              <h1 className="title"><FormattedMessage id="list" /></h1>
-            </div>
-          </div>
-        </section>
+        <h1 className="title"><FormattedMessage id="list" /></h1>
         {/*<button>{this.state.dataPokemons.length} pokemons</button>*/}
         <div>
           {pokemons.map((dataPokemon) => {
@@ -66,20 +60,12 @@ class Home extends Component {
             )
           })}
         </div>
-        {/*{this.state.loading && <Loading />}*/}
+        {!pokemons && <div>Loading...</div>}
       </div>
     );
   }
 }
-
-Home.propTypes = {
-  dataPokemons: PropTypes.array,
-  page: PropTypes.number,
-  loading: PropTypes.bool,
-};
-
 const mapStateToProps = ({ pokemons }) => ({
   pokemons,
 });
-
 export default connect(mapStateToProps, { fetchPokemons })(Home);
