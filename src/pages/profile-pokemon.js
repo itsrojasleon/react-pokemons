@@ -7,13 +7,10 @@ import PropTypes from 'prop-types';
 import Type from '../components/Type';
 
 export default class ProfilePokemon extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemons: {},
-      loading: true,
-    };
-  }
+  state = {
+    pokemons: {},
+    loading: true,
+  };
 
   async componentDidMount() {
     const pokemons = await api.pokemons.getPokemons(this.props.match.params.id);

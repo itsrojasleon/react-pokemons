@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Pokemon extends Component {
+class Pokemon extends Component {
   render() {
     return (
       <div className="box container-name-and-pokemon column is-3">
@@ -11,3 +11,4 @@ export default class Pokemon extends Component {
     )
   }
 }
+export default Pokemon;

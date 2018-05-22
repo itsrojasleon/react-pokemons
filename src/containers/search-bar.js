@@ -4,18 +4,12 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 export default class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: '',
-      exactQuery: '',
-    };
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleOnSearch = this.handleOnSearch.bind(this);
-    this.renderPokemon = this.renderPokemon.bind(this);
-  }
+ state = {
+    search: '',
+    exactQuery: '',
+  };
 
-  async handleSearch(e) {
+  handleSearch = async (e) => {
     e.preventDefault();
     const response = await api.pokemons.getPokemons(this.state.search);
 
@@ -24,13 +18,13 @@ export default class SearchBar extends Component {
     });
   }
 
-  handleOnSearch(res) {
+  handleOnSearch = (res) => {
     this.setState({
       search: res.target.value,
     });
   }
 
-  renderPokemon() {
+  renderPokemon = () => {
     if(this.state.exactQuery.name === this.state.search) {
       const image = 'https://img.pokemondb.net/sprites/black-white/anim/normal';
       return (
@@ -56,8 +50,11 @@ export default class SearchBar extends Component {
     return (
       <div className="column is-4 input-container">
         <form onSubmit={this.handleSearch}>
-          <h3 className="is-size-4"><FormattedMessage id="search" /></h3>
-          <input onChange={this.handleOnSearch} className="input is-primary" />
+          <input
+            onChange={this.handleOnSearch}
+            className="input is-info is-medium"
+            placeholder="Find your favorite pokemon"
+          />
         </form>
         {this.renderPokemon()}
       </div>

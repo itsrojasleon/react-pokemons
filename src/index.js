@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Routes from './Routes';
+import App from './app';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
@@ -14,9 +13,7 @@ const locale = navigator.languages.indexOf('es') >= 0 ? 'es' : 'en';
 
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages[locale]}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <App />
   </IntlProvider>,
   document.getElementById('root')
 );

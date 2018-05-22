@@ -4,18 +4,13 @@ import Pokemon from '../components/Pokemon';
 import Loading from '../components/shared/Loading';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import SearchBar from '../components/SearchBar';
 
-class PokemonIndex extends Component {
-constructor(props) {
-  super(props);
-  this.state = {
+class Home extends Component {
+  state = {
     dataPokemons: [],
     page: 0,
     loading: true,
   };
-  this.scrolling = this.scrolling.bind(this);
-}
 
   async componentDidMount() {
     const pokemonsResponse = await api.pokemons.getDataPokemons(this.state.page);
@@ -33,7 +28,7 @@ constructor(props) {
     window.removeEventListener('scroll', this.scrolling);
   }
 
-  scrolling(event) {
+  scrolling = (event) => {
     if(this.state.loading) return null;
 
     const scrolled = window.scrollY;
@@ -59,14 +54,13 @@ constructor(props) {
   render() {
     return (
       <div>
-        <section className="hero is-primary">
+        <section className="hero is-warning">
           <div className="hero-body">
             <div className="container">
               <h1 className="title"><FormattedMessage id="list" /></h1>
             </div>
           </div>
         </section>
-        <SearchBar />
         <button className="is-static button counter">{this.state.dataPokemons.length} pokemons</button>
         <div className="columns is-multiline">
           {this.state.dataPokemons.map((dataPokemon) => {
@@ -84,10 +78,10 @@ constructor(props) {
   }
 }
 
-PokemonIndex.propTypes = {
+Home.propTypes = {
   dataPokemons: PropTypes.array,
   page: PropTypes.number,
   loading: PropTypes.bool,
 };
 
-export default PokemonIndex;
+export default Home;
