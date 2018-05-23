@@ -2,7 +2,7 @@ import { FETCH_POKEMONS, ADD_NEW_PAGE, FETCH_POKEMON } from '../actions';
 
 const initialState = {
   pokemons: [],
-  pokemon: {},
+  pokemon: "",
 };
 export default function pokemonsReducer(state = initialState, action) {
   switch(action.type) {

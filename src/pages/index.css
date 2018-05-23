@@ -9,6 +9,10 @@
   width: 80%;
   margin: auto;
 }
+.subtitle {
+  color: rgb(121, 125, 127);
+  font-size: 20px;
+}
 @media(max-width: 769px) {
   .pokemons-container {
     width: 100%;

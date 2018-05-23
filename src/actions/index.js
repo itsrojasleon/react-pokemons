@@ -30,15 +30,7 @@ export const addNewPage = (page) => {
     dispatch(hideLoading());
   }
 };
-export const fetchPokemon = (pokemon) => {
-  return async (dispatch) => {
-    dispatch(showLoading());
-    const response = await fetch(`${BASE_URL}/pokemon/${pokemon}`);
-    const data = await response.json();
-    dispatch({
-      type: FETCH_POKEMON,
-      pokemon: data,
-    });
-    dispatch(hideLoading());
-  }
-}
+export const fetchPokemon = (pokemon) => ({
+  type: FETCH_POKEMON,
+  pokemon
+});

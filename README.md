@@ -1,8 +1,9 @@
 # react-pokemons
-Listado y descripción de pokemons
+Poke App
 
-# Run server
-1. npm start
-
-# Deploy
-now
+## Download the repo and setup
+```
+1. git clone https://github.com/rojasleon/react-pokemons.git
+2. npm install / npm i
+3. npm start
+```

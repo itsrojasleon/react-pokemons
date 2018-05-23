@@ -37,13 +37,17 @@ class Home extends Component {
   }
 
   render() {
-    const { pokemons } = this.props;
+    const { pokemons, pokemon } = this.props;
+    const showingPokemons = pokemon === ''
+      ? pokemons
+      : pokemons.filter((poke) => poke.name.includes(pokemon))
     return (
       <div>
         <h1 className="title"><FormattedMessage id="list" /></h1>
+        <p className="subtitle">Infinite scroll</p>
         {/*<button>{this.state.dataPokemons.length} pokemons</button>*/}
         <div className="pokemons-container">
-          {pokemons.map((dataPokemon) => {
+          {showingPokemons.map((dataPokemon) => {
             return (
               <Pokemon
                 key={dataPokemon.url}
@@ -57,7 +61,8 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = ({ pokemons: { pokemons } }) => ({
+const mapStateToProps = ({ pokemons: { pokemons, pokemon } }) => ({
   pokemons,
+  pokemon,
 });
 export default connect(mapStateToProps, { fetchPokemons, addNewPage })(Home);

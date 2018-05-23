@@ -24,6 +24,7 @@
   display: none;
   width: 20%;
   margin-top: 10px;
+  text-align: center;
 }
 .button-submit:hover {
   cursor: pointer;
@@ -41,5 +42,6 @@
   }
   .button-submit {
     display: block;
+    text-align: center;
   }
 }
