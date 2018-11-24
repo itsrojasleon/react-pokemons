@@ -6,7 +6,7 @@ const BASE_URL = 'https://pokeapi.co/api/v2';
 
 export const fetchPokemons = () => {
   return async (dispatch) => {
-    const response = await fetch(`${BASE_URL}/pokemon/?offset=0`);
+    const response = await fetch(`${BASE_URL}/pokemon/?offset=1`);
     const data = await response.json();
     dispatch({
       type: FETCH_POKEMONS,
